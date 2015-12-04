@@ -1,0 +1,17 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:kindy="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <com.kindy.library.view.KindyCircleImage
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/headicon_circle_container"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        kindy:img="@drawable/tangyan"
+        />
+
+</RelativeLayout>

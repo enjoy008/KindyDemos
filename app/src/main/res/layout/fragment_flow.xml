@@ -1,0 +1,16 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <com.kindy.library.view.FlowLayout
+        android:padding="2dp"
+        android:id="@+id/id_flowlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFE5E5F5"
+        >
+
+    </com.kindy.library.view.FlowLayout>
+
+</RelativeLayout>
