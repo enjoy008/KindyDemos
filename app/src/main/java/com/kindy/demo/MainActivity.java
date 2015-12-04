@@ -22,11 +22,8 @@ public class MainActivity extends AppCompatActivity {
     private String[] mVals = new String[] {
             "FlowFragment",
             "CircleViewFragment",
-            " . . . 华丽的分割线 . . . ",
-
-            "Hello", "Android", "Weclome Hi ", "Button", "TextView", "Hello",
-            "Android", "Weclome", "ButtonImage", "TextView", "Helloworld",
-            "Android"};
+            " . . . 华丽的分割线 . . . "
+    };
 
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private RecyclerView mRecyclerView;
@@ -48,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
         mData = new ArrayList<>();
         for(int i=0; i<mVals.length; i++) {
             mData.add(new SimpleString(mVals[i]));
+        }
+        for(int i='A'; i<'z'; i++) {
+            mData.add(new SimpleString("" + (char)i));
         }
         mSimpleAdapter = new SimpleAdapter(this, mData);
         mSimpleAdapter.setOnSimpleItemClickListener(mOnSimpleItemClickListener);
