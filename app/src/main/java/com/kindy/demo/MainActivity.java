@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initData();
+        initData(); 
     }
 
     public void initData() {
@@ -60,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
         mSwipeRefreshLayout.setProgressBackgroundColorSchemeResource(R.color.gray_line);
         mSwipeRefreshLayout.setColorSchemeResources(R.color.color1, R.color.color2, R.color.color3, R.color.color4);
         mSwipeRefreshLayout.setOnRefreshListener(mOnRefreshListener);
-
     }
 
     private OnSimpleItemClickListener mOnSimpleItemClickListener = new OnSimpleItemClickListener() {

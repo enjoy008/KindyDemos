@@ -5,19 +5,18 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.TextView;
 
 import com.kindy.demo.R;
 import com.kindy.demo.model.OnSimpleItemClickListener;
 import com.kindy.demo.model.SimpleString;
+import com.kindy.library.impl.BaseViewHolder;
 
 import java.util.ArrayList;
 
 /**
  * Created by Kindy on 2015/12/4.
  */
-public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.StringHolder>{
+public class SimpleAdapter extends RecyclerView.Adapter<BaseViewHolder>{
     private ArrayList<SimpleString> mData;
     private Context mContext;
     private LayoutInflater mLayoutInflater;
@@ -31,18 +30,18 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.StringHold
     }
 
     @Override
-    public StringHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View item = mLayoutInflater.inflate(R.layout.simple_item, parent, false);
-
-        return new StringHolder(item);
+        item.setOnClickListener(mOnClickListener);
+        return new BaseViewHolder(item);
     }
 
     @Override
-    public void onBindViewHolder(StringHolder holder, int position) {
+    public void onBindViewHolder(BaseViewHolder holder, int position) {
         SimpleString bean = mData.get(position);
-        holder.title.setText(bean.name);
+        holder.setText(R.id.simple_text, bean.name);
         holder.itemView.setTag(R.id.id_click, position);
-        holder.itemView.setOnClickListener(mOnClickListener);
+        holder.itemView.setEnabled(position != 2);
     }
 
     @Override
@@ -64,12 +63,4 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.StringHold
         }
     };
 
-    public static class StringHolder extends RecyclerView.ViewHolder {
-        public final TextView title;
-
-        public StringHolder(View view) {
-            super(view);
-            title = (TextView) view.findViewById(R.id.simple_text);
-        }
-    }
 }

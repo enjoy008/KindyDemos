@@ -16,7 +16,7 @@
 
 <resources>
     
-    <color name="kindy_headicon_background">#ffffffff</color>
-    <color name="kindy_headicon_border">#ffdbdbdb</color>
+    <color name="kindy_circleimage_background">#ffffffff</color>
+    <color name="kindy_circleimage_border">#ffdbdbdb</color>
     
 </resources>

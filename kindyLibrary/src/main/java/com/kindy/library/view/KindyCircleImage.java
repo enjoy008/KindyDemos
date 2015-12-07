@@ -47,6 +47,8 @@ public class KindyCircleImage extends ViewGroup {
         if (imageDrawableId != 0) {
             setImage(imageDrawableId);
         }
+
+        this.setBackgroundResource(R.drawable.circleimage_container);
     }
 
     public void setImage(int drawable) {
