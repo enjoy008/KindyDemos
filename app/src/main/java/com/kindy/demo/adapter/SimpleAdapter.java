@@ -41,7 +41,6 @@ public class SimpleAdapter extends RecyclerView.Adapter<BaseViewHolder>{
         SimpleString bean = mData.get(position);
         holder.setText(R.id.simple_text, bean.name);
         holder.itemView.setTag(R.id.id_click, position);
-        holder.itemView.setEnabled(position != 2);
     }
 
     @Override

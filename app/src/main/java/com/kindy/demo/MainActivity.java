@@ -9,11 +9,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Toast;
 
 import com.kindy.demo.adapter.SimpleAdapter;
 import com.kindy.demo.model.OnSimpleItemClickListener;
 import com.kindy.demo.model.SimpleString;
-import com.kindy.library.utils.L;
 
 import java.util.ArrayList;
 
@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private String[] mVals = new String[] {
             "FlowFragment",
             "CircleViewFragment",
+            "LargeImageFragment",
             " . . . 华丽的分割线 . . . "
     };
 
@@ -65,13 +66,18 @@ public class MainActivity extends AppCompatActivity {
     private OnSimpleItemClickListener mOnSimpleItemClickListener = new OnSimpleItemClickListener() {
         @Override
         public void onSimpleItemClick(View v, int position) {
-            L.o(this, " position = " + position);
+            Toast.makeText(MainActivity.this, mData.get(position).name, Toast.LENGTH_SHORT).show();
+            if(position >= mVals.length-1) {
+                return;
+            }
 
             Intent intent = new Intent(MainActivity.this, CommonActivity.class);
             if(position == 0) {
                 intent.putExtra(CommonActivity.TARGET, CommonActivity.TARGET_FLOW);
-            } else {
+            } else if(position == 1) {
                 intent.putExtra(CommonActivity.TARGET, CommonActivity.TARGET_CIRCLEVIEW);
+            } else {
+                intent.putExtra(CommonActivity.TARGET, CommonActivity.TARGET_LARGEIMAGE);
             }
             startActivity(intent);
         }

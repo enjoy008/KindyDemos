@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.kindy.demo.ui.CircleViewFragment;
 import com.kindy.demo.ui.FlowFragment;
+import com.kindy.demo.ui.LargeImageFragment;
 
 /**
  * Created by Kindy on 2015/12/4.
@@ -18,6 +19,7 @@ public class CommonActivity extends AppCompatActivity {
 
     public static final int TARGET_FLOW       = 1;
     public static final int TARGET_CIRCLEVIEW = 2;
+    public static final int TARGET_LARGEIMAGE = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,9 @@ public class CommonActivity extends AppCompatActivity {
             case TARGET_CIRCLEVIEW:
                 fragment = new CircleViewFragment();
             break;
+            case TARGET_LARGEIMAGE:
+                fragment = new LargeImageFragment();
+                break;
         }
         if(fragment != null) {
             FragmentManager fm = getSupportFragmentManager();
