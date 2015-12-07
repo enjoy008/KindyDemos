@@ -6,14 +6,18 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import com.kindy.demo.adapter.SimpleAdapter;
 import com.kindy.demo.model.OnSimpleItemClickListener;
 import com.kindy.demo.model.SimpleString;
+import com.kindy.library.impl.DividerItemDecoration;
 
 import java.util.ArrayList;
 
@@ -23,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
             "FlowFragment",
             "CircleViewFragment",
             "LargeImageFragment",
+            "DragFragment",
             " . . . 华丽的分割线 . . . "
     };
 
@@ -57,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mSimpleAdapter);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.addOnScrollListener(mOnScrollListener);
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST));
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
         mSwipeRefreshLayout.setProgressBackgroundColorSchemeResource(R.color.gray_line);
         mSwipeRefreshLayout.setColorSchemeResources(R.color.color1, R.color.color2, R.color.color3, R.color.color4);
@@ -76,8 +83,10 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(CommonActivity.TARGET, CommonActivity.TARGET_FLOW);
             } else if(position == 1) {
                 intent.putExtra(CommonActivity.TARGET, CommonActivity.TARGET_CIRCLEVIEW);
-            } else {
+            } else if(position == 2) {
                 intent.putExtra(CommonActivity.TARGET, CommonActivity.TARGET_LARGEIMAGE);
+            } else {
+                intent.putExtra(CommonActivity.TARGET, CommonActivity.TARGET_DRAG);
             }
             startActivity(intent);
         }
@@ -117,4 +126,28 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     });
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)  {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_add:
+                mData.add(mVals.length, new SimpleString("new item"));
+                mSimpleAdapter.notifyItemInserted(mVals.length);
+                break;
+            case R.id.action_remove:
+                if(mData.size() > mVals.length) {
+                    mData.remove(mVals.length);
+                    mSimpleAdapter.notifyItemRemoved(mVals.length);
+                }
+                break;
+        }
+        return true;
+    }
 }
