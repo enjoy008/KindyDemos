@@ -2,6 +2,7 @@ package com.kindy.demo;
 
 import android.app.Application;
 
+import com.kindy.library.utils.CommonUtils;
 import com.squareup.leakcanary.LeakCanary;
 
 /**
@@ -12,6 +13,12 @@ public class KindyApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        LeakCanary.install(this);
+        init();
     }
+
+    private void init() {
+        LeakCanary.install(this);
+        CommonUtils.init(this);
+    }
+
 }

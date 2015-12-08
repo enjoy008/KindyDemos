@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
             "CircleViewFragment",
             "LargeImageFragment",
             "DragFragment",
+            "DrawerFragment",
             " . . . 华丽的分割线 . . . "
     };
 
@@ -85,8 +86,10 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(CommonActivity.TARGET, CommonActivity.TARGET_CIRCLEVIEW);
             } else if(position == 2) {
                 intent.putExtra(CommonActivity.TARGET, CommonActivity.TARGET_LARGEIMAGE);
-            } else {
+            } else if(position == 3) {
                 intent.putExtra(CommonActivity.TARGET, CommonActivity.TARGET_DRAG);
+            } else {
+                intent.putExtra(CommonActivity.TARGET, CommonActivity.TARGET_DRAWER);
             }
             startActivity(intent);
         }

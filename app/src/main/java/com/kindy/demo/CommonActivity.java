@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.kindy.demo.ui.CircleViewFragment;
 import com.kindy.demo.ui.DragFragment;
+import com.kindy.demo.ui.DrawerFragment;
 import com.kindy.demo.ui.FlowFragment;
 import com.kindy.demo.ui.LargeImageFragment;
 
@@ -22,6 +23,7 @@ public class CommonActivity extends AppCompatActivity {
     public static final int TARGET_CIRCLEVIEW = 2;
     public static final int TARGET_LARGEIMAGE = 3;
     public static final int TARGET_DRAG       = 4;
+    public static final int TARGET_DRAWER     = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,9 @@ public class CommonActivity extends AppCompatActivity {
                 break;
             case TARGET_DRAG:
                 fragment = new DragFragment();
+                break;
+            case TARGET_DRAWER:
+                fragment = new DrawerFragment();
                 break;
         }
         if(fragment != null) {
