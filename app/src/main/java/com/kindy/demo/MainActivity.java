@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.addOnScrollListener(mOnScrollListener);
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST));
-        // 更过动画 https://github.com/gabrielemariotti/RecyclerViewItemAnimators
+        // 更多动画 https://github.com/gabrielemariotti/RecyclerViewItemAnimators
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
         mSwipeRefreshLayout.setProgressBackgroundColorSchemeResource(R.color.gray_line);
