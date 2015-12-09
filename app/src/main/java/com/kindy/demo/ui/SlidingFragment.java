@@ -2,8 +2,6 @@ package com.kindy.demo.ui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +27,6 @@ public class SlidingFragment extends Fragment {
 
         view.findViewById(R.id.btn_open).setOnClickListener(mOnClickListener);
         view.findViewById(R.id.btn_close).setOnClickListener(mOnClickListener);
-        view.findViewById(R.id.btn_change).setOnClickListener(mOnClickListener);
         mMenu = view.findViewById(R.id.menu);
 
         return view;
@@ -57,12 +54,6 @@ public class SlidingFragment extends Fragment {
                 break;
                 case R.id.btn_close:
                     mSlidingLayout.closeDrawer();
-                    break;
-                case R.id.btn_change:
-                    FragmentManager fm = getActivity().getSupportFragmentManager();
-                    FragmentTransaction transaction = fm.beginTransaction();
-                    transaction.replace(R.id.layout_common, new DrawerFragment());
-                    transaction.commit();
                     break;
             }
         }

@@ -12,6 +12,7 @@ import com.kindy.demo.ui.DragFragment;
 import com.kindy.demo.ui.DrawerFragment;
 import com.kindy.demo.ui.FlowFragment;
 import com.kindy.demo.ui.LargeImageFragment;
+import com.kindy.demo.ui.SlidingFragment;
 
 /**
  * Created by Kindy on 2015/12/4.
@@ -24,6 +25,7 @@ public class CommonActivity extends AppCompatActivity {
     public static final int TARGET_LARGEIMAGE = 3;
     public static final int TARGET_DRAG       = 4;
     public static final int TARGET_DRAWER     = 5;
+    public static final int TARGET_SLIDING    = 6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +58,9 @@ public class CommonActivity extends AppCompatActivity {
                 break;
             case TARGET_DRAWER:
                 fragment = new DrawerFragment();
+                break;
+            case TARGET_SLIDING:
+                fragment = new SlidingFragment();
                 break;
         }
         if(fragment != null) {

@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
             "LargeImageFragment",
             "DragFragment",
             "DrawerFragment",
+            "SlidingFragment",
             " . . . 华丽的分割线 . . . "
     };
 
@@ -89,8 +90,10 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(CommonActivity.TARGET, CommonActivity.TARGET_LARGEIMAGE);
             } else if(position == 3) {
                 intent.putExtra(CommonActivity.TARGET, CommonActivity.TARGET_DRAG);
-            } else {
+            } else if(position == 4) {
                 intent.putExtra(CommonActivity.TARGET, CommonActivity.TARGET_DRAWER);
+            } else if(position == 5) {
+                intent.putExtra(CommonActivity.TARGET, CommonActivity.TARGET_SLIDING);
             }
             startActivity(intent);
         }
