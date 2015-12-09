@@ -12,12 +12,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.kindy.demo.adapter.SimpleAdapter;
 import com.kindy.demo.model.OnSimpleItemClickListener;
 import com.kindy.demo.model.SimpleString;
 import com.kindy.library.impl.DividerItemDecoration;
+import com.kindy.library.utils.CommonUtils;
 
 import java.util.ArrayList;
 
@@ -50,8 +50,8 @@ public class MainActivity extends AppCompatActivity {
         mSwipeRefreshLayout = (SwipeRefreshLayout) this.findViewById(R.id.srl);
         mRecyclerView = (RecyclerView)this.findViewById(R.id.recyclerView);
         mData = new ArrayList<>();
-        for(int i=0; i<mVals.length; i++) {
-            mData.add(new SimpleString(mVals[i]));
+        for(String value : mVals) {
+            mData.add(new SimpleString(value));
         }
         for(int i='A'; i<'z'; i++) {
             mData.add(new SimpleString("" + (char)i));
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
     private OnSimpleItemClickListener mOnSimpleItemClickListener = new OnSimpleItemClickListener() {
         @Override
         public void onSimpleItemClick(View v, int position) {
-            Toast.makeText(MainActivity.this, mData.get(position).name, Toast.LENGTH_SHORT).show();
+            CommonUtils.getInstance().showToast(mData.get(position).name);
             if(position >= mVals.length-1) {
                 return;
             }

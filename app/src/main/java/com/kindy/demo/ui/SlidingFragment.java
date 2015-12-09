@@ -10,36 +10,36 @@ import android.view.ViewGroup;
 
 import com.kindy.demo.R;
 import com.kindy.library.utils.CommonUtils;
-import com.kindy.library.view.KindyDrawerLayout;
+import com.kindy.library.view.KindySlidingLayout;
 
 /**
  * Created by Kindy on 2015/12/4.
  */
-public class DrawerFragment extends Fragment {
-    private KindyDrawerLayout mDrawerLayout;
+public class SlidingFragment extends Fragment {
+    private KindySlidingLayout mSlidingLayout;
 
-    private View mContent;
+    private View mMenu;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_drawer, container, false);
+        View view = inflater.inflate(R.layout.fragment_sliding, container, false);
 
-        mDrawerLayout = (KindyDrawerLayout)view.findViewById(R.id.drawerlayout);
-        mDrawerLayout.setOnDrawerSlideListener(mOnDrawerSlideListener);
+        mSlidingLayout = (KindySlidingLayout)view.findViewById(R.id.slidinglayout);
+        mSlidingLayout.setOnSlidingListener(mOnSlidingListener);
 
         view.findViewById(R.id.btn_open).setOnClickListener(mOnClickListener);
         view.findViewById(R.id.btn_close).setOnClickListener(mOnClickListener);
         view.findViewById(R.id.btn_change).setOnClickListener(mOnClickListener);
-        mContent = view.findViewById(R.id.content);
+        mMenu = view.findViewById(R.id.menu);
 
         return view;
     }
 
-    private KindyDrawerLayout.OnDrawerSlideListener mOnDrawerSlideListener = new KindyDrawerLayout.OnDrawerSlideListener() {
+    private KindySlidingLayout.OnSlidingListener mOnSlidingListener = new KindySlidingLayout.OnSlidingListener() {
 
         @Override
-        public void onDrawerSlide(float value) {
-            mContent.setAlpha(1.0f-value*0.6f);
+        public void onSliding(float value) {
+            mMenu.setAlpha(value);
             if(value == 0.0f) {
                 CommonUtils.getInstance().showToast("关闭");
             } else if(value == 1.0f) {
@@ -53,15 +53,15 @@ public class DrawerFragment extends Fragment {
         public void onClick(View v) {
             switch(v.getId()) {
                 case R.id.btn_open:
-                    mDrawerLayout.openDrawer();
+                    mSlidingLayout.openDrawer();
                 break;
                 case R.id.btn_close:
-                    mDrawerLayout.closeDrawer();
+                    mSlidingLayout.closeDrawer();
                     break;
                 case R.id.btn_change:
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     FragmentTransaction transaction = fm.beginTransaction();
-                    transaction.replace(R.id.layout_common, new SlidingFragment());
+                    transaction.replace(R.id.layout_common, new DrawerFragment());
                     transaction.commit();
                     break;
             }
