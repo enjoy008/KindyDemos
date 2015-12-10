@@ -1,6 +1,7 @@
 package com.kindy.library.view;
 
 import android.content.Context;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.ViewDragHelper;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -105,6 +106,7 @@ public class KindySlidingLayout extends ViewGroup {
     public void computeScroll() {
         if (mDragger.continueSettling(true)) {
             invalidate();
+            ViewCompat.postInvalidateOnAnimation(this); //TODO 不加经常会卡停
         }
     }
 
@@ -158,7 +160,7 @@ public class KindySlidingLayout extends ViewGroup {
         mMenuView.layout(lc, tc, rc, bc);
 
         lp = (MarginLayoutParams)mContentView.getLayoutParams();
-        lc = lp.leftMargin + getPaddingLeft();
+        lc = Math.max(lp.leftMargin + getPaddingLeft(), mContentView.getLeft());// 解决bug MarginLayoutParams
         tc = lp.topMargin + getPaddingTop();
         rc = lc + mContentView.getMeasuredWidth();
         bc = tc + mContentView.getMeasuredHeight();
@@ -240,15 +242,13 @@ public class KindySlidingLayout extends ViewGroup {
         @Override
         public void onViewPositionChanged(View changedView, int left, int top, int dx, int dy) {
             super.onViewPositionChanged(changedView, left, top, dx, dy);
-//            mParent.mContentView.offsetLeftAndRight(dx);
-            mParent.mOffsetMenu = (left - mParent.getContentLeft()) * 1.0f / (mParent.getMenuRight());
-            if(mParent.mOffsetMenu == CLOSE) {
-                mParent.mMenuView.setVisibility(View.INVISIBLE);
-            } else {
-                mParent.mMenuView.setVisibility(View.VISIBLE);
-            }
 
-            mParent.invalidate();
+            mParent.mOffsetMenu = (left - mParent.getContentLeft()) * 1.0f / (mParent.getMenuRight());
+//            if(mParent.mOffsetMenu == CLOSE) {
+//                mParent.mMenuView.setVisibility(View.INVISIBLE);
+//            } else {
+//                mParent.mMenuView.setVisibility(View.VISIBLE);
+//            }
 
             if(mParent.mOnSlidingListener != null) {
                 mParent.mOnSlidingListener.onSliding(mParent.mOffsetMenu);
