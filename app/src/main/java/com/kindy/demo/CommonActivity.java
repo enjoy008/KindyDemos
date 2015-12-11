@@ -7,12 +7,14 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
+import com.kindy.demo.ui.CanvasFragment;
 import com.kindy.demo.ui.CircleViewFragment;
 import com.kindy.demo.ui.DragFragment;
 import com.kindy.demo.ui.DrawerFragment;
 import com.kindy.demo.ui.FlowFragment;
 import com.kindy.demo.ui.LargeImageFragment;
 import com.kindy.demo.ui.SlidingFragment;
+import com.kindy.demo.ui.WeiChatFragment;
 
 /**
  * Created by Kindy on 2015/12/4.
@@ -26,6 +28,8 @@ public class CommonActivity extends AppCompatActivity {
     public static final int TARGET_DRAG       = 4;
     public static final int TARGET_DRAWER     = 5;
     public static final int TARGET_SLIDING    = 6;
+    public static final int TARGET_CANVAS     = 7;
+    public static final int TARGET_WEICHAT    = 8;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +65,12 @@ public class CommonActivity extends AppCompatActivity {
                 break;
             case TARGET_SLIDING:
                 fragment = new SlidingFragment();
+                break;
+            case TARGET_CANVAS:
+                fragment = new CanvasFragment();
+                break;
+            case TARGET_WEICHAT:
+                fragment = new WeiChatFragment();
                 break;
         }
         if(fragment != null) {

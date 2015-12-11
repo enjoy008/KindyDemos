@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="kindy_icon" format="reference" />
+    <attr name="kindy_color" format="color" />
+    <attr name="kindy_text" format="string" />
+    <attr name="kindy_text_size" format="dimension" />
+
+    <declare-styleable name="ChangeColorIconView">
+        <attr name="kindy_icon" />
+        <attr name="kindy_color" />
+        <attr name="kindy_text" />
+        <attr name="kindy_text_size" />
+    </declare-styleable>
+
+</resources>

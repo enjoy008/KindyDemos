@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
             "DragFragment",
             "DrawerFragment",
             "SlidingFragment",
+            "CanvasFragment",
+            "WeiChatFragment",
             " . . . 华丽的分割线 . . . "
     };
 
@@ -94,6 +96,10 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(CommonActivity.TARGET, CommonActivity.TARGET_DRAWER);
             } else if(position == 5) {
                 intent.putExtra(CommonActivity.TARGET, CommonActivity.TARGET_SLIDING);
+            } else if(position == 6) {
+                intent.putExtra(CommonActivity.TARGET, CommonActivity.TARGET_CANVAS);
+            } else if(position == 7) {
+                intent.putExtra(CommonActivity.TARGET, CommonActivity.TARGET_WEICHAT);
             }
             startActivity(intent);
         }
